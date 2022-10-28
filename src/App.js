@@ -5,14 +5,16 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 import { Home } from './componnets/Home';
 import { Add } from './componnets/Add';
 import { useRef, useState, useEffect } from "react";
-
+import {startAlgo} from "./algorithm/MergeSort"
+import { HeapDisplay } from './HeapDisplay/HeapDisplay';
+import { QuickDisplay } from './quickDisplay/QuickDisplay';
+import { MergeDisplay } from './mergeDisplay/MergeDisplay';
+let side="start";
 function App() {
   const[arr,setArr]=useState([]);
-  const[obj,setObj]=useState({});
   const[min,setMin]=useState();
   const[I,setI]=useState();
-  const[minS,setMinS]=useState();
-  const[IS,setIS]=useState(0);
+ 
   const[stop,setStop]=useState(true);
   let run=false;
   const[cont,setCont]=useState(0);
@@ -20,10 +22,13 @@ function App() {
   const[bblJ,setBblJ]=useState(0);
   const[insI,setInsI]=useState(0);
   const[insJ,setInsJ]=useState(0);
-  const[mergeI,setMergeI]=useState(0);
-  const[mergeJ,setMergeJ]=useState(0);
-  const[left,setLeft]=useState([]);
-  const[rigth,setRight]=useState([]);
+  const[mergeStart,setMergeStart]=useState(0);
+  const[mergeEnd,setMergeEnd]=useState(0);
+  const[first,setFirst]=useState(0);
+  const[quickI,setQuickI]=useState(0);
+  const[quickJ,setQuickJ]=useState(0);
+  const[heapI,setHeapI]=useState(0);
+  const[heapLarge,setHeapLarge]=useState(0);
 
 // const boxRef = useRef();
 
@@ -59,14 +64,16 @@ function App() {
 
 useEffect(() => {
   var startArr=[];
-  for(let i=0; i<100;i++)
+  for(let i=0; i<180;i++)
   {
-    let num=randomNum(5,500)
-    startArr.push([num,i])
+    let num=randomNum(20,900)
+    startArr.push(num)
 
   }
   let temp={};
-  setArr([...startArr])
+  setArr(startArr)
+  // setArr([5,1,9,2,39,2,3])
+  setMergeEnd(arr.length)
 //  for(let i=0;i<startArr.length;i++)
 //  {
   
@@ -78,7 +85,24 @@ useEffect(() => {
 
 
 
+useEffect(() => {
 
+  setMergeEnd(arr.length)
+  // console.log(arr.length)
+
+ 
+}, [arr]);
+
+
+
+
+// useEffect(() => {
+
+  
+ 
+// // console.log("useEffectEnd"+mergeEnd)
+ 
+// }, [mergeEnd]);
 
 
 
@@ -127,7 +151,7 @@ return randomNum
 
           }
           setMin(min)
-          setCont(i)
+          setI(i)
 
           setCont(i)
 
@@ -177,28 +201,31 @@ async function bblSort(arr,bblI,bblJ){
 let first=true;
 
   for(var i = bblI; i < arr.length; i++){
-    
+
     if(run)
     return arr
     // Last i elements are already in place 
     for(var j = 0; j < ( arr.length - i -1 ); j++){
-      if(first) {j=bblJ;first=false} 
-      setBblI(i)
-      setBblJ(j)
-      setCont(i)
-      setArr([...arr])
-      console.log("meow")
-      // Checking if the item at present iteration
-      // is greater than the next iteration
-
       const myPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve("foo");
         }, 1);
       });  
-
-
+  
+  
       await myPromise
+
+
+      if(first) {j=bblJ;first=false} 
+      setBblI(i)
+      setBblJ(j)
+     
+      setArr([...arr])
+      console.log("meow")
+      // Checking if the item at present iteration
+      // is greater than the next iteration
+
+     
       if(arr[j] > arr[j+1]){
          
         // If the condition is true then swap them
@@ -207,7 +234,7 @@ let first=true;
         arr[j+1] = temp
         setBblI(i)
         setBblJ(j)
-      setCont(i)
+     
       setArr([...arr])
             
       if(run)
@@ -217,8 +244,7 @@ let first=true;
 
 
       
-      if(run)
-          return arr
+      
     }
   }
   // Print the sorted array
@@ -230,7 +256,7 @@ let first=true;
 /////ins
 
 
-  function insertionSort(arr,insI,insJ) 
+  async function insertionSort(arr,insI,insJ) 
  { 
 
   setStop(false)
@@ -258,9 +284,14 @@ let first=true;
              if(run)
              return arr
              
+             const myPromise = new Promise((resolve, reject) => {
               setTimeout(() => {
-              ""
-              }, 10);
+                resolve("foo");
+              }, 1);
+            });  
+      
+      
+            await myPromise
            
             
       
@@ -281,138 +312,104 @@ let first=true;
 
 
 
- /// mergeSort
 
 
-async function mergeSort(arr)
-{
-  console.log(arr)
-if(arr.length<2)
-return;
-console.log(arr.length)
-let midIndex= Math.floor(arr.length/2)
-let leftHalf=[];
-let righttHalf=[];
+//  function swap(arr, i, j) {
+//   let temp = arr[i];
+//   arr[i] = arr[j];
+//   arr[j] = temp;
+//   setQuickJ(j)
+//   setQuickI(i)
+//   setArr([...arr])
+// console.log(side)
+// return   new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//   resolve("foo");
 
-for(let i=0;i<midIndex;i++)
-{
-leftHalf[i]=arr[i];
-
-
-}
-
-
-for(let j=midIndex;j<arr.length;j++)
-{
-righttHalf[j-midIndex]=arr[j];
-
-}
-
-
-mergeSort(leftHalf)
-mergeSort(righttHalf)
-merge(arr,leftHalf,righttHalf)
-
-}
+// }, 15);
+//     })
 
 
 
-async function merge(arr1,leftHalf,righttHalf)////////////////////////////
+// }
 
-{
-let temp;
-  const myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("foo");
-    }, 100);
-  });
+// /* This function takes last element as pivot, places
+//  the pivot element at its correct position in sorted
+//  array, and places all smaller (smaller than pivot)
+//  to left of pivot and all greater elements to right
+//  of pivot */
+// async function partition(arr, low, high) {
 
-  await myPromise
+//   // pivot
+//   let pivot = arr[high];
 
-let leftSize=leftHalf.length;
-let rightSize=righttHalf.length;
+//   // Index of smaller element and
+//   // indicates the right position
+//   // of pivot found so far
+//   let i = (low - 1);
 
-let i=0
-let j=0
-let k=0;
+//   for (let j = low; j <= high - 1; j++) {
 
-while(i<leftSize&&j<rightSize)
-{
+//       // If current element is smaller 
+//       // than the pivot
+//       if (arr[j] < pivot) {
 
-  const myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("foo");
-    }, 250);
-  });  
-  
+//           // Increment index of 
+//           // smaller element
+//           i++;
+//          await swap(arr, i, j);
+//       }
+//   }
+//  await swap(arr, i + 1, high);
 
-  await myPromise
+//   return (i + 1);
+// }
+
+// /* The main function that implements QuickSort
+//         arr[] --> Array to be sorted,
+//         low --> Starting index,
+//         high --> Ending index
+// */
+// async function quickSort(arr, low, high) {
+//   if (low < high) {
+
+//       // pi is partitioning index, arr[p]
+//       // is now at right place 
+      
+//       let pi = await partition(arr, low, high);
+// console.log("....... low :"+low+" high: "+high+" pi: "+pi)
+//       // Separately sort elements before
+//       // partition and after partition
+//       side="left"
+//       await quickSort(arr, low, pi - 1);
+//       side="right"
+
+//       await  quickSort(arr, pi + 1, high);
+//   }
+// }
 
 
 
-if(leftHalf[i][0]<=righttHalf[j][0])
-{
-  arr1[k]=leftHalf[i]
- let index=arr.findIndex(e=>e[1]==leftHalf[i][1])
-
-  temp=arr
-  temp[index]=leftHalf[i]
-  setMergeJ(index)
-  setArr([...temp])
-  i++
- 
-
-}
-else{
-  arr1[k]=righttHalf[j];
-  let index=arr.findIndex(e=>e[1]==righttHalf[j][1])
-  setMergeI(index)
-  temp=arr
-  temp[index]=righttHalf[j]
-  setArr([...temp])
-  j++
 
 
 
-  
 
-}
 
-k++;
-}
-while(i<leftSize)
-{
-  arr1[k]=leftHalf[i]
-  let index=arr.findIndex(e=>e[1]==leftHalf[i][1])
-  setMergeI(index)
-  temp=arr
-  temp[index]=leftHalf[i]
-  setArr([...temp])
-  i++;
-  k++;
 
-}
 
-while(j<rightSize)
-{
-  arr1[k]=righttHalf[j]
-  let index=arr.findIndex(e=>e[1]==righttHalf[j][1])
-  console.log(righttHalf[j][1])
-  setMergeJ(index)
-  temp=arr
-  temp[index]=righttHalf[j]
- setArr([...temp])
-  j++;
-  k++;
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////heap sort
+
+
+
+
+
+
+
 
  
-}
-
-
-}
-
-
-
 
 
 
@@ -421,22 +418,37 @@ while(j<rightSize)
     <div className="App">
    
 
- 
+{/*  
 
-{arr.map((e,i)=>((bblI==i|| bblJ==i)||(I==i||min==i)||(insI==i||insJ==i)||(mergeI==i||mergeJ==i)? <div className='coulmns' style={{'height':`${arr[i][0]/2}px`,"backgroundColor":"black"}} key={i} ></div>: <div className='coulmns' style={{'height':`${arr[i][0]/2}px`}} key={i} ></div>)
+{arr.map((e,i)=>((bblI==i|| bblJ==i)||(I==i||min==i)||(insI==i||insJ==i)||(quickI==i||quickJ==i)||(heapI==i||heapLarge==i)? <div className='coulmns' style={{'height':`${arr[i]/2}px`,"backgroundColor":"black"}} key={i} ></div>: <div className='coulmns' style={{'height':`${arr[i]/2}px`}} key={i} ></div>)
  
   
 )}
 
 
 <button id='stop' onClick={()=>{stop?selectionSort(arr,cont): setStop(true)}}> sort</button>
-{/* <button  onClick={()=>{stop?setStop(false): setStop(true)}}> {stop}</button> */}
+{/* <button  onClick={()=>{stop?setStop(false): setStop(true)}}> {stop}</button> 
 
 <button id='bubble' onClick={()=>{stop?bblSort(arr,bblI,bblJ): setStop(true)}}> bbl</button>
 
-<button id='insert' onClick={()=>{stop?insertionSort(arr,bblI,bblJ): setStop(true)}}> bbl</button>
+<button id='insert' onClick={()=>{stop?insertionSort(arr,bblI,bblJ): setStop(true)}}> insertion</button>
 
-<button id='merge' onClick={()=>{stop?mergeSort(arr): setStop(true)}}> merge</button>
+<button id='merge'  onClick={()=>{if(first==0){startAlgo(arr,mergeStart,mergeEnd-1,side,setArr);};setFirst(first+1)}}> merge</button>
+
+<button id='s' onClick={()=>{}}> time</button>
+
+<button id='quick' onClick={()=>{quickSort(arr, 0, arr.length-1);}}> quick</button>
+<button id='heap' onClick={()=>{Heapsort(arr)}}> heap</button> */}
+
+
+<Routes>
+
+<Route path='/heapSort' element={<HeapDisplay/>}></Route>
+<Route path='/quickSort' element={<QuickDisplay/>}></Route>
+<Route path='/mergeSort' element={<MergeDisplay/>}></Route>
+<Route path='/' element={<HeapDisplay/>}></Route>
+<Route path='/' element={<HeapDisplay/>}></Route>
+</Routes>
 
 
 

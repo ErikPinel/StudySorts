@@ -1,0 +1,8 @@
+.heapSort-container{
+display: flex;
+flex-direction: row;
+}
+
+.coulmns{
+    width: 1px;
+}

@@ -1,0 +1,8 @@
+.mergePage-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.coulmns{
+    width: 2px;
+}
