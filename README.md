@@ -29,7 +29,7 @@ and provides a visual implementation of the algorithm.
 
 
  Dark mode about section 
-<p align="center"><img src="../public/main3.PNG" heigth="500" width="500" /></p>
+<p align="center"><img src="../../public/main3.PNG" heigth="500" width="500" /></p>
  Light mode
 <p align="center"><img src="./light mode.PNG" heigth="500" width="500" /></p>
 Item bids section
