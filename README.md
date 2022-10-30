@@ -27,7 +27,7 @@ and provides a visual implementation of the algorithm.
 3. add path finding section.
 4. add general section about cs topics.
 
-
+<br/>
  Dark mode about section 
 <p align="center"><img src="./public/main.PNG" heigth="500" width="500" /></p>
  Light mode code example section
