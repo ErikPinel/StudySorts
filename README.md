@@ -30,9 +30,9 @@ and provides a visual implementation of the algorithm.
 
  Dark mode about section 
 <p align="center"><img src="./public/main.PNG" heigth="500" width="500" /></p>
- Light mode
+ Light mode code example section
 <p align="center"><img src="./public/main2.PNG" heigth="500" width="500" /></p>
-Item bids section
+Light mode visual implementation of the algorithm
 <p align="center"><img src="./public/main3.PNG" heigth="500" width="500" /></p>
 
 
