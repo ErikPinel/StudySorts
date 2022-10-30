@@ -1,8 +1,74 @@
 .mergePage-container{
-    display: flex;
-    flex-direction: row;
+    text-align: center;
+    margin: 2vw;
 }
 
 .coulmns{
-    width: 2px;
-}
+    margin-top: 5vw !important;
+        width: 2px;
+    }
+    .chart-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+       
+        margin: 2vw;
+        border-radius: 3%;
+        height: 600px;
+        width: 800px;
+        transform: translateX(-2vw);
+       
+    }
+    
+    .insertionBtn{
+       
+margin-left: 2vw !important;
+        
+    }
+    
+    
+    .content-container{
+    
+        margin-bottom: 20vh;
+        text-align: right;
+    }
+    
+    .pre-insertion
+    {
+        margin-left: 2vw !important;
+    width: 70vw !important;
+    border-radius: 3% !important;
+    transform: translateX(-10vw)
+    }
+    
+    .copyIcon-container{
+        float: right;
+        padding: 1vw;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    
+    }
+    
+    .chart-father-container{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    }
+    
+    
+    
+    /* .copyIcon-container:visited{
+    border-color: green;
+    border-radius: 2px;
+    border-style: solid;
+    } */
+    
+    
+    .clipIcon{
+        cursor: pointer;
+    }

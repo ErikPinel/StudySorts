@@ -1,9 +1,10 @@
 .App {
-  display: flex;
-  flex-direction: row;
+ 
  
 }
-
+.link{
+  margin: 2vw;
+}
 header h1{
   margin: 0;
 }

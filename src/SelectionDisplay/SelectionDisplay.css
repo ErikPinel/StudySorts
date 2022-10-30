@@ -1,7 +1,8 @@
-.quickSort-container{
+.selectionSort-container{
     text-align: center;
     margin: 2vw;
 }
+
 
 .coulmns{
     margin-top: 5vw !important;
@@ -22,9 +23,7 @@
     }
     
     .insertionBtn{
-       
-margin-left: 2vw !important;
-        
+        margin-left: 35%;
     }
     
     

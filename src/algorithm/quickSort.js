@@ -1,8 +1,7 @@
+let time = 10;
+let time1;
 export function quickAlgo(arr,setQuickI,setQuickJ ,setArr)
 {
-
-
-
     function randomNum(min,max)
 
     {
@@ -17,13 +16,28 @@ async function swap(arr,index1,index2)
       arr[index1]=arr[index2]
       arr[index2]=temp
       
-      const promise=new Promise((resolve, reject) => {
-        setTimeout(() => {
-        resolve("foo");
-      
-      }, 10);
-          })
-      await promise
+      const myPromise = new Promise((resolve, reject) => {
+        time1 = setTimeout(() => {
+          resolve("foo");
+        }, time);
+        const eStart = document.getElementById("quick");
+        eStart.addEventListener("click", () => {
+          {
+            clearTimeout(time1);
+            time1 = null;
+            time = 20;
+            console.log("time" + time);
+            resolve("foo");
+          }
+        });
+        const element = document.getElementById("qs");
+        element.addEventListener("click", () => {
+          time = 10000000;
+          console.log(time);
+        });
+      });
+
+      await myPromise;
       
       setArr([...arr])
       }
@@ -45,13 +59,28 @@ async function swap(arr,index1,index2)
             leftPointer++
             setQuickI(leftPointer)
         
-            const promise=new Promise((resolve, reject) => {
-              setTimeout(() => {
-              resolve("foo");
-            
-            }, 10);
-                })
-            await promise
+            const myPromise = new Promise((resolve, reject) => {
+                time1 = setTimeout(() => {
+                  resolve("foo");
+                }, time);
+                const eStart = document.getElementById("quick");
+                eStart.addEventListener("click", () => {
+                  {
+                    clearTimeout(time1);
+                    time1 = null;
+                    time = 20;
+                    console.log("time" + time);
+                    resolve("foo");
+                  }
+                });
+                const element = document.getElementById("qs");
+                element.addEventListener("click", () => {
+                  time = 10000000;
+                  console.log(time);
+                });
+              });
+        
+              await myPromise;
         }
         
         
@@ -59,16 +88,34 @@ async function swap(arr,index1,index2)
         {
             rightPointer--
             setQuickJ(rightPointer)
-            const promise=new Promise((resolve, reject) => {
-              setTimeout(() => {
-              resolve("foo");
-            
-            }, 10);
-                })
-            await promise
+            const myPromise = new Promise((resolve, reject) => {
+                time1 = setTimeout(() => {
+                  resolve("foo");
+                }, time);
+                const eStart = document.getElementById("quick");
+                eStart.addEventListener("click", () => {
+                  {
+                    clearTimeout(time1);
+                    time1 = null;
+                    time = 20;
+                    console.log("time" + time);
+                    resolve("foo");
+                  }
+                });
+                const element = document.getElementById("qs");
+                element.addEventListener("click", () => {
+                  time = 10000000;
+                  console.log(time);
+                });
+              });
+        
+              await myPromise;
       
            
         }
+
+
+        
        
         
         swap(arr,leftPointer,rightPointer)
@@ -99,8 +146,37 @@ async function swap(arr,index1,index2)
       }
 
 
-
-
-
+     
       quickSort(arr, 0, arr.length-1);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+//     function randomNum(min,max)//מציאת איבר רנדומאלי בטווח
+//     {
+//       let randomNum = Math.floor(Math.random() * (max-min+1)+min);
+//       return randomNum
+//     }
+
+
+//  function swap(arr,index1,index2)//חילוף בין שני איברים
+//       {
+//       let temp=arr[index1]
+//       arr[index1]=arr[index2]
+//       arr[index2]=temp
+//       }
+      
+      
+      
+      
+    

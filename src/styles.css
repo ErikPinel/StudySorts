@@ -1,0 +1,9 @@
+.link{
+    border-left-color: grey;
+    border-left-style: solid;
+    border-left-width: 2px;
+    text-decoration: none  ;
+    text-decoration-color: none;
+    padding: 1.5vw;
+   color: grey;
+}

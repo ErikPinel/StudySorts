@@ -1,6 +1,7 @@
-.quickSort-container{
+.bubbleSort-container{
     text-align: center;
     margin: 2vw;
+
 }
 
 .coulmns{
@@ -14,7 +15,7 @@
         text-align: center;
        
         margin: 2vw;
-        border-radius: 3%;
+        border-radius: 5%;
         height: 600px;
         width: 800px;
         transform: translateX(-2vw);
@@ -22,9 +23,7 @@
     }
     
     .insertionBtn{
-       
-margin-left: 2vw !important;
-        
+        margin-left: 35%;
     }
     
     

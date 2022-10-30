@@ -1,201 +1,172 @@
 let time = 10;
 let time1;
 
-export function startAlgo(arr,l,r,side,setArr)
-{
+export function startAlgo(arr, l, r, side, setArr) {
+  async function merge(arr, l, m, r, side) {
+    /////////////////////////////////////helper
 
-async function merge(arr, l, m, r,side)/////////////////////////////////////helper
+    // console.log("merge")
 
-{
- // console.log("merge")
+    var n1 = m - l + 1;
+    var n2 = r - m;
 
+    // Create temp arrays
+    var L = [];
+    var R = [];
+    setArr([...arr]);
 
+    // Copy data to temp arrays L[] and R[]
+    for (var i = 0; i < n1; i++) L[i] = arr[l + i];
+    for (var j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
 
-   var n1 = m - l + 1;
-   var n2 = r - m;
+    // Merge the temp arrays back into arr[l..r]
 
-   // Create temp arrays
-   var L = []
-   var R = []
-   setArr([...arr])
+    // Initial j of first subarray
+    var i = 0;
 
-   // Copy data to temp arrays L[] and R[]
-   for (var i = 0; i < n1; i++)
-       L[i] = arr[l + i];
-   for (var j = 0; j < n2; j++)
-       R[j] = arr[m + 1 + j];
+    // Initial index of second subarray
 
-   // Merge the temp arrays back into arr[l..r]
+    var j = 0;
+    // console.log("time"+time)
 
-   // Initial j of first subarray
-   var i = 0;
+    // Initial index of merged subarray
+    var k = l;
 
-   // Initial index of second subarray
-   
-   var j = 0;
-   // console.log("time"+time)
+    while (i < n1 && j < n2) {
+      const myPromise = new Promise((resolve, reject) => {
+        time1 = setTimeout(() => {
+          resolve("foo");
+        }, time);
+        const eStart = document.getElementById("merge");
+        eStart.addEventListener("click", () => {
+          {
+            clearTimeout(time1);
+            time1 = null;
+            time = 20;
+            console.log("time" + time);
+            resolve("foo");
+          }
+        });
+        const element = document.getElementById("s");
+        element.addEventListener("click", () => {
+          time = 10000000;
+          console.log(time);
+        });
+      });
 
-  
-   // Initial index of merged subarray
-   var k = l;
-   
+      await myPromise;
+      console.log(time);
 
+      if (L[i] <= R[j]) {
+        arr[k] = L[i];
+        i++;
 
+        setArr([...arr]);
+      } else {
+        arr[k] = R[j];
+        j++;
+        setArr([...arr]);
+      }
+      k++;
+    }
 
+    // Copy the remaining elements of
+    // L[], if there are any
+    while (i < n1) {
+      const myPromise = new Promise((resolve, reject) => {
+        time1 = setTimeout(() => {
+          resolve("foo");
+        }, time);
+        const eStart = document.getElementById("merge");
+        eStart.addEventListener("click", () => {
+          {
+            clearTimeout(time1);
+            time1 = null;
+            time = 20;
+            console.log("time" + time);
+            resolve("foo");
+          }
+        });
+        const element = document.getElementById("s");
+        element.addEventListener("click", () => {
+          time = 10000000;
+          console.log(time);
+        });
+      });
 
+      await myPromise;
 
+      arr[k] = L[i];
+      i++;
+      k++;
+      setArr([...arr]);
+    }
 
+    // Copy the remaining elements of
+    // R[], if there are any
+    while (j < n2) {
+      const myPromise = new Promise((resolve, reject) => {
+        time1 = setTimeout(() => {
+          resolve("foo");
+        }, time);
+        const eStart = document.getElementById("merge");
+        eStart.addEventListener("click", () => {
+          {
+            clearTimeout(time1);
+            time1 = null;
+            time = 20;
+            console.log("time" + time);
+            resolve("foo");
+          }
+        });
+        const element = document.getElementById("s");
+        element.addEventListener("click", () => {
+          time = 10000000;
+          console.log(time);
+        });
+      });
 
+      await myPromise;
 
+      arr[k] = R[j];
+      j++;
+      k++;
+      setArr([...arr]);
+    }
+    // console.log("arr startEnd:  "+arr)
+    setArr([...arr]);
+  }
 
-   while (i < n1 && j < n2) {
-  
-     const myPromise = new Promise((resolve, reject) => {
-       time1= setTimeout(() => {
-         resolve("foo");
-   
-       }, time);
-       const eStart = document.getElementById("merge");
-       eStart.addEventListener("click", ()=>{{clearTimeout(time1);time1=null;time=20; console.log("time"+time);resolve("foo")};})
-       const element = document.getElementById("s");
-       element.addEventListener("click", ()=>{ time=10000000 ;console.log(time)})      })
-   
-   await myPromise
-   console.log(time)
+  // l is for left index and r is
+  // right index of the sub-array
+  // of arr to be sorted */
 
-       if (L[i] <= R[j]) {
-           arr[k] = L[i];
-           i++;
-           
-           setArr([...arr])
-       
-       }
-       else {
-           arr[k] = R[j];
-           j++;
-           setArr([...arr])
-      
-       }
-       k++;
-   }
+  async function mergeSort(arr, l, r, side) {
+    ////////////////////recursion
 
-   // Copy the remaining elements of
-   // L[], if there are any
-   while (i < n1) {
-   
-     const myPromise = new Promise((resolve, reject) => {
-       time1= setTimeout(() => {
-         resolve("foo");
-   
-       }, time);
-       const eStart = document.getElementById("merge");
-       eStart.addEventListener("click", ()=>{{clearTimeout(time1);time1=null;time=20; console.log("time"+time);resolve("foo")};})
-       const element = document.getElementById("s");
-       element.addEventListener("click", ()=>{ time=10000000 ;console.log(time)})      })
-   
-   await myPromise
+    if (l >= r) {
+      // console.log("arr stop: "+arr+"******** l: "+l+"m: "+m+"r:"+r)
+      return; //returns recursively
+    }
+    // const element = document.getElementById("merge");
+    // element.addEventListener("click", ()=>{if(time==10){setTime(1000000000)} else{setTime(10);console.log(  time)}})
 
-       arr[k] = L[i];
-       i++;
-       k++;
-       setArr([...arr])
-  
-   }
+    // console.log(side+"main")
+    var m = l + parseInt((r - l) / 2);
+    // console.log("arr: "+arr+"******** l: "+l+"m: "+m+"r:"+r)
+    side = "left";
+    await mergeSort(arr, l, m, side);
+    side = "right";
 
-   // Copy the remaining elements of
-   // R[], if there are any
-   while (j < n2) {
-   
-     const myPromise = new Promise((resolve, reject) => {
-       time1= setTimeout(() => {
-         resolve("foo");
-   
-       }, time);
-       const eStart = document.getElementById("merge");
-       eStart.addEventListener("click", ()=>{{clearTimeout(time1);time1=null;time=20; console.log("time"+time);resolve("foo")};})
-       const element = document.getElementById("s");
-       element.addEventListener("click", ()=>{ time=10000000 ;console.log(time)})      })
-   
-   await myPromise
+    await mergeSort(arr, m + 1, r, side);
 
-       arr[k] = R[j];
-       j++;
-       k++;
-       setArr([...arr])
-   
-   }
-   // console.log("arr startEnd:  "+arr)
-   setArr([...arr])
+    await merge(arr, l, m, r);
+  }
 
-
-
-
-   
-   
+  mergeSort(arr, l, r, side);
 }
 
-// l is for left index and r is
-// right index of the sub-array
-// of arr to be sorted */
-
-
-async function mergeSort(arr,l, r,side){////////////////////recursion
-
-
-   if(l>=r){
-
-     // console.log("arr stop: "+arr+"******** l: "+l+"m: "+m+"r:"+r)
-       return;//returns recursively
-   }
-   // const element = document.getElementById("merge");
-   // element.addEventListener("click", ()=>{if(time==10){setTime(1000000000)} else{setTime(10);console.log(  time)}})
-
- 
-
-
-
-
- 
-
-
-   
-   // console.log(side+"main")
-   var m =l+ parseInt((r-l)/2);
-   // console.log("arr: "+arr+"******** l: "+l+"m: "+m+"r:"+r)
-     side="left"
-     await  mergeSort(arr,l,m,side);
-     side="right"
-
-     
-   
- 
-
-     await  mergeSort(arr,m+1,r,side);
- 
-     
-     await merge(arr,l,m,r);
-
-   
-}
-
-
-
-    mergeSort(arr,l,r,side)
-}
-
-
-
-
-
-
-
-
-
-
-
-
- /// mergeSort
-
+/// mergeSort
 
 // async function mergeSort(arr)
 // {
@@ -211,9 +182,7 @@ async function mergeSort(arr,l, r,side){////////////////////recursion
 // {
 // leftHalf.push(arr[i])
 
-
 // }
-
 
 // for(let j=midIndex;j<arr.length;j++)
 // {
@@ -221,20 +190,16 @@ async function mergeSort(arr,l, r,side){////////////////////recursion
 
 // }
 
-
 //  await mergeSort(leftHalf)
 // await mergeSort(righttHalf)
 // await merge(arr,leftHalf,righttHalf)
 
 // }
 
-
-
 // async function merge(arr1,leftHalf,righttHalf)////////////////////////////
 
 // {
 // let temp;
-
 
 // let leftSize=leftHalf.length;
 // let rightSize=righttHalf.length;
@@ -246,34 +211,24 @@ async function mergeSort(arr,l, r,side){////////////////////recursion
 // while(i<leftSize&&j<rightSize)
 // {
 
-
-
 //   await new Promise(r => setTimeout(r,10))
-
-
 
 // if(leftHalf[i]<=righttHalf[j])
 // {
 //   arr1[k]=leftHalf[i]
- 
+
 //   setMergeI(i)
 //   setArr([...arr1])
 //   i++
- 
 
 // }
 // else{
 //   arr1[k]=righttHalf[j];
 //   let index=arr.findIndex(e=>e[1]==righttHalf[j][1])
 //   setMergeJ(j)
- 
-  
+
 //   setArr([...arr1])
 //   j++
-
-
-
-  
 
 // }
 
@@ -283,7 +238,7 @@ async function mergeSort(arr,l, r,side){////////////////////recursion
 // {
 //   await new Promise(r => setTimeout(r,10))
 //   arr1[k]=leftHalf[i]
-  
+
 //   setMergeI(i)
 
 //   setArr([...arr1])
@@ -296,28 +251,22 @@ async function mergeSort(arr,l, r,side){////////////////////recursion
 // {
 //   await new Promise(r => setTimeout(r,10))
 //   arr1[k]=righttHalf[j]
-  
+
 //   setMergeJ(j)
-  
-  
+
 //  setArr([...arr1])
 //   j++;
 //   k++;
 
- 
 // }
 // setArr([...arr1])
 
 // }
 
-
-
 // function returnPromise() {
 //   return new Promise(function(resolve, reject) {
 //     time1= setTimeout(() => {
 //       resolve("foo");
-
-
 
 //     }, time);
 //     const element = document.getElementById("merge");
@@ -325,3 +274,4 @@ async function mergeSort(arr,l, r,side){////////////////////recursion
 
 //   });
 // }
+
