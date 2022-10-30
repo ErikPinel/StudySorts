@@ -54,7 +54,7 @@ transform: translateX(-10vw)
 }
 
 .chart-father-container{
-    width: 100vw;
+
     display: flex;
     justify-content: center;
 }

@@ -30,8 +30,9 @@ export const HeapDisplay = () => {
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
     const [isCopied, setIsCopied] = useState(false);
+    const [isCopied2, setIsCopied2] = useState(false);
     const [isStopBtn, setIsStopBtn] = useState("התחל");
-
+    const [reset, setReset] = useState(true);
 
 
 
@@ -55,7 +56,7 @@ export const HeapDisplay = () => {
   //  }
   //  setObj(temp)
    
-  }, []);
+  }, [reset]);
   
   
   
@@ -142,7 +143,11 @@ useEffect(() => {
 
     // <button id='heap' onClick={()=>{HeapAlgo(arr,setHeapI,setHeapLarge,setArr,side,randomNum)}}> heap</button>
 
+function resetChart()
+{
 
+
+}
 
 
   return (
@@ -168,6 +173,7 @@ useEffect(() => {
             onClick={() => {
               navigator.clipboard.writeText(mergeCode1);
               setIsCopied(true);
+              setTimeout(()=>{setIsCopied(false);},1000)
             }}
             className="language-javascript pre-insertion"
           >
@@ -187,13 +193,14 @@ useEffect(() => {
          
             onClick={() => {
               navigator.clipboard.writeText(mergeCode2);
-              setIsCopied(true);
+              setIsCopied2(true);
+              setTimeout(()=>{setIsCopied2(false);},1000)
             }}
             className="language-javascript pre-insertion"
           >
             <Box className="copyIcon-container">
               {" "}
-              {isCopied ? (
+              {isCopied2 ? (
                 <AssignmentTurnedInIcon />
               ) : (
                 <ContentCopyIcon className="clipIcon" />
@@ -262,6 +269,11 @@ useEffect(() => {
     
       <Button id='hs'  variant="contained" className="insertionBtn"
         color="success"  onClick={()=>{isStopBtn == "התחל" ? setIsStopBtn("הפסק") : setIsStopBtn("התחל")}}> הפסק</Button>
+
+{/* <Button   variant="contained" className="insertionBtn"
+        color="success"  onClick={()=>{}}> התחל מחדש</Button> */}
+
+
       <div className="chart-father-container">
        
        

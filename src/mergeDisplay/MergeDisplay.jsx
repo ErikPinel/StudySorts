@@ -23,7 +23,7 @@ export const MergeDisplay = () => {
     const[mergeEnd,setMergeEnd]=useState(0);
     const[first,setFirst]=useState(0);
     let side="start";
-
+    const [isCopied2, setIsCopied2] = useState(false);
 
 
     const theme = useTheme();
@@ -174,7 +174,6 @@ const mergeCode2= `function mergeSort(arr, l, r, side) {
              הוא פועל בכך שהוא מפרק את המערך לחצאים, עד שהוא נתקל במערך בעל איבר אחד.<br></br>
               לאחר מכן מתחיל שלב המיזוג בין שני החצאים שנוצרו עד למיזוג האחרון אשר יוצר את המערך השלם כאשר הוא ממויין.
             <br></br>
-          ודוחף אותו לסוף "המערך המשני" שנוצר בזמן ריצת האלגוריתם. (בהנחה שהמיון הוא בסדר עולה)
             </p>
           </div>
           <hr></hr>
@@ -185,6 +184,7 @@ const mergeCode2= `function mergeSort(arr, l, r, side) {
             onClick={() => {
               navigator.clipboard.writeText(mergeCode1);
               setIsCopied(true);
+              setTimeout(()=>{setIsCopied(false)},1000)
             }}
             className="language-javascript pre-insertion"
           >
@@ -204,13 +204,16 @@ const mergeCode2= `function mergeSort(arr, l, r, side) {
          
             onClick={() => {
               navigator.clipboard.writeText(mergeCode2);
-              setIsCopied(true);
+              setIsCopied2(true);
+              setTimeout(()=>{setIsCopied2(false);},1000)
             }}
             className="language-javascript pre-insertion"
-          >
+             >
+
+
             <Box className="copyIcon-container">
               {" "}
-              {isCopied ? (
+              {isCopied2 ? (
                 <AssignmentTurnedInIcon />
               ) : (
                 <ContentCopyIcon className="clipIcon" />
@@ -219,8 +222,6 @@ const mergeCode2= `function mergeSort(arr, l, r, side) {
 
             <code dir="rtl">{mergeCode2}</code>
           </pre>
-
-
 
           <br />
           <hr />

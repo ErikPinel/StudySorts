@@ -1,0 +1,36 @@
+
+  
+  .link{
+    position: relative;
+
+  }
+  .link:hover{
+    color: white;
+  }
+  .link::after {
+    top: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: white;
+    width: 0%;
+    content: "";
+    height: 4px;
+    transition: all 0.5s;
+  }
+
+  .links::after {
+    transition: all 0.5s;
+  }
+
+  .link:hover::after {
+    width: 100%;
+  }
+
+  .nav-container
+  {
+    padding: 0;
+    margin: 0;
+  }

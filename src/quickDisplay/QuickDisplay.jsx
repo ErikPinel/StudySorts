@@ -7,7 +7,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { Box, Button } from "@mui/material";
 import { useTheme } from '@emotion/react';
-
+import gif from '../Quicksort-example.gif'
 
 export function QuickDisplay()  {
     const[quickI,setQuickI]=useState(0);
@@ -24,6 +24,7 @@ export function QuickDisplay()  {
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
     const [isCopied, setIsCopied] = useState(false);
+    const [isCopied2, setIsCopied2] = useState(false);
     const [isStopBtn, setIsStopBtn] = useState("התחל");
 
 
@@ -33,7 +34,7 @@ export function QuickDisplay()  {
         
         for(let i=0; i<180;i++)
         {
-          let num=randomNum(20,900)
+          let num=randomNum(20,500)
           startArr.push(num)
       
         }
@@ -74,7 +75,7 @@ export function QuickDisplay()  {
         Prism.highlightAll();
       }, []);
       
-      const mergeCode1 = `     function partition1(arr,lowIndex,highIndex,pivot)
+      const mergeCode1 = `     function partition(arr,lowIndex,highIndex,pivot)
       {
       
         let leftPointer=lowIndex//מצביע לסוף
@@ -112,7 +113,7 @@ export function QuickDisplay()  {
       
       `;
       
-      const mergeCode2= `       function quickSort1(arr,lowIndex,highIndex)
+      const mergeCode2= `       function quickSort(arr,lowIndex,highIndex)
       {
       
        //עצירת הפונקציה במידה והטווח במערך קטן מידי
@@ -126,8 +127,8 @@ export function QuickDisplay()  {
       //נפעיל את הפונקציה על מנת לסדר את האיבר הבא
       //נקבל את הטווח השמאלי החדש
       let leftPointer=  partition1(arr,lowIndex,highIndex,pivot)
-       quickSort1(arr,lowIndex,leftPointer-1)// נפעיל את הפונקיצה על החלק השמאלי
-       quickSort1(arr,leftPointer+1,highIndex)//נפעיל את הפונקיצה על החלק הימני
+       quickSort(arr,lowIndex,leftPointer-1)// נפעיל את הפונקיצה על החלק השמאלי
+       quickSort(arr,leftPointer+1,highIndex)//נפעיל את הפונקיצה על החלק הימני
       }
 `;
       
@@ -157,6 +158,8 @@ export function QuickDisplay()  {
              הפעולה תתבצע עד אשר כל האיברים של המערך יהיו מסודרים.
             <br></br>
          
+
+         <div  > <img src={gif}></img> </div>
             </p>
           </div>
           <hr></hr>
@@ -167,6 +170,7 @@ export function QuickDisplay()  {
             onClick={() => {
               navigator.clipboard.writeText(mergeCode1);
               setIsCopied(true);
+              setTimeout(()=>{setIsCopied(false);},1000)
             }}
             className="language-javascript pre-insertion"
           >
@@ -187,6 +191,7 @@ export function QuickDisplay()  {
             onClick={() => {
               navigator.clipboard.writeText(mergeCode2);
               setIsCopied(true);
+              setTimeout(()=>{setIsCopied2(false);},1000)
             }}
             className="language-javascript pre-insertion"
           >

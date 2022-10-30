@@ -106,6 +106,7 @@ export const BubbleDisplay = () => {
             onClick={() => {
               navigator.clipboard.writeText(BubbleCode);
               setIsCopied(true);
+              setTimeout(()=>{setIsCopied(false);},1000)
             }}
             className="language-javascript pre-insertion"
           >

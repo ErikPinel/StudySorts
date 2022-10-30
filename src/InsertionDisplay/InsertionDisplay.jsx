@@ -120,7 +120,9 @@ export const InsertionDisplay = () => {
 
 <pre 
   onClick={() =>
-    {navigator.clipboard.writeText(insertionCode)  ;setIsCopied(true)}
+    {navigator.clipboard.writeText(insertionCode)  ;setIsCopied(true)
+      setTimeout(()=>{setIsCopied(false);},1000)
+    }
   }
   className="language-javascript pre-insertion"
 >
