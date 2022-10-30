@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { selectionAlgo } from '../algorithm/SeclectionSort';
-import "./SelectionDisplay.css"
 import { tokens, ColorModeContext } from "../theme";
 
 import Prism from "prismjs";
 import "../quickDisplay/prism.css";
+import "./SelectionDisplay.css"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { Box, Button } from "@mui/material";
 import { useTheme } from '@emotion/react';
-
+import gif from '../Quicksort-example.gif'
 
 
 
@@ -132,6 +132,7 @@ export const SelectionDisplay = () => {
             <br></br>
           ודוחף אותו לסוף "המערך המשני" שנוצר בזמן ריצת האלגוריתם. (בהנחה שהמיון הוא בסדר עולה)
             </p>
+            <img className='main-sec' src={gif}></img> 
           </div>
           <hr></hr>
           <h1> ישום האלגוריתם ב JavaScript</h1>
@@ -140,7 +141,7 @@ export const SelectionDisplay = () => {
             onClick={() => {
               navigator.clipboard.writeText(BubbleCode);
               setIsCopied(true);
-              setTimeout(()=>{setIsCopied(false);},1000)
+                setTimeout(()=>{setIsCopied(false);},1000)
             }}
             className="language-javascript pre-insertion"
           >
@@ -226,3 +227,7 @@ export const SelectionDisplay = () => {
     </div>
   )
 }
+
+
+
+

@@ -75,7 +75,7 @@ export function QuickDisplay()  {
         Prism.highlightAll();
       }, []);
       
-      const mergeCode1 = `     function partition(arr,lowIndex,highIndex,pivot)
+      const mergeCode1 = ` function partition(arr,lowIndex,highIndex,pivot)
       {
       
         let leftPointer=lowIndex//מצביע לסוף
@@ -150,16 +150,17 @@ export function QuickDisplay()  {
         <div className="header">
           <h1> מיון מהיר </h1>
           <hr></hr>
-          <div>
+          <div >
             <h3 dir="rtl">מה זה מיון מהיר?</h3>
-            <p>
+            <p >
             מיון מהיר כשמו, הוא האלגוריתם המהיר ביותר בפועל. הוא אלגוריתם רקורסיבי אשר עובד לפי עקרון "הפרד ומשול",<br></br>
              הוא פועל בכך שהוא קובע עוגן ולפיו הוא מפרק את המערך לחצאים כך שמימין אליו נמצאים האיברים הגדולים ממנו ומשמאלו האיברים הקטנים ממנו <br></br> (בהנחה שהמיון הוא בסדר עולה) .
              הפעולה תתבצע עד אשר כל האיברים של המערך יהיו מסודרים.
+             
             <br></br>
-         
+           <img className='main-sec' src={gif}></img> 
 
-         <div  > <img src={gif}></img> </div>
+     
             </p>
           </div>
           <hr></hr>
@@ -190,14 +191,14 @@ export function QuickDisplay()  {
          
             onClick={() => {
               navigator.clipboard.writeText(mergeCode2);
-              setIsCopied(true);
+              setIsCopied2(true);
               setTimeout(()=>{setIsCopied2(false);},1000)
             }}
             className="language-javascript pre-insertion"
           >
             <Box className="copyIcon-container">
               {" "}
-              {isCopied ? (
+              {isCopied2 ? (
                 <AssignmentTurnedInIcon />
               ) : (
                 <ContentCopyIcon className="clipIcon" />

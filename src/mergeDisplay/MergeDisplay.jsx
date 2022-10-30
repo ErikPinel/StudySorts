@@ -11,7 +11,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { Box, Button } from "@mui/material";
 import { useTheme } from '@emotion/react';
-
+import gif from './ms2.webp'
 
 
 
@@ -174,6 +174,7 @@ const mergeCode2= `function mergeSort(arr, l, r, side) {
              הוא פועל בכך שהוא מפרק את המערך לחצאים, עד שהוא נתקל במערך בעל איבר אחד.<br></br>
               לאחר מכן מתחיל שלב המיזוג בין שני החצאים שנוצרו עד למיזוג האחרון אשר יוצר את המערך השלם כאשר הוא ממויין.
             <br></br>
+            <img className='main-sec' src={gif}></img> 
             </p>
           </div>
           <hr></hr>

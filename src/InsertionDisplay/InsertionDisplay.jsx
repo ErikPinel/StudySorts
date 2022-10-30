@@ -9,6 +9,9 @@ import "../quickDisplay/prism.css"
  import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
+import gif from './Insertion-sort-example.gif'
+
+
 
 export const InsertionDisplay = () => {
   const theme = useTheme();
@@ -109,11 +112,13 @@ export const InsertionDisplay = () => {
           <div>
             <h3 dir="rtl">מה זה מיון הכנסה?</h3>
             <p>
+              
               מיון ההכנסה משווה בין שני משתנים בכל איטרציה, (בהנחה שאנחנו
               ממיינים בסדר עולה) במידה והאיבר במקום ה-i גדול מהאיבר במקום ה-i+1,
               לא מתבצעת פעולה אחרת אנחנו מזיזים את המספר במקום ה- i+1 מיקום אחד
               שמאלה עד שהאיבר יפגוש מספר קטן ממנו.
             </p>
+            <img className='main-sec' src={gif}></img> 
           </div>
           <hr></hr>
           <h1> ישום האלגוריתם ב JavaScript</h1>

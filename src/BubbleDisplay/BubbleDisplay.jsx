@@ -8,6 +8,9 @@ import "../quickDisplay/prism.css";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { Box, Button } from "@mui/material";
+import gif from './bubble.gif';
+
+
 
 export const BubbleDisplay = () => {
   const [bblI, setBblI] = useState(0);
@@ -98,6 +101,7 @@ export const BubbleDisplay = () => {
              <br></br> הוא פועל כך שהוא משוואה בין שני מספרים 
               וכך כל פעם "מבעבע" איבר ימינה במערך (בהנחה שממיינים בסדר עולה).
             </p>
+            <img className='main-sec' src={gif}></img> 
           </div>
           <hr></hr>
           <h1> ישום האלגוריתם ב JavaScript</h1>
@@ -126,10 +130,10 @@ export const BubbleDisplay = () => {
 
           <h2>מתי מיון הבועות עלול להיות שימושי?</h2>
           <p>
-            {" "}
             מיון הבועות יעיל כאשר אנחנו מתמודדים עם מערכים קטנים או/ו כאשר אנחנו
             רוצים לסדר מערך שברובו כבר מסודר מראש.
           </p>
+        
           <hr></hr>
           <h2>סיבוכיות מיון הבועות</h2>
           <ul>

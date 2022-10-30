@@ -71,3 +71,13 @@
     .clipIcon{
         cursor: pointer;
     }
+
+
+        
+    .main-sec{
+        width: 50vw;
+        margin: 5vw;
+        margin-right: 30vw;
+        display: flex;
+        flex-direction: row;
+    }

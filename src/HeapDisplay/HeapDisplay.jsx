@@ -12,7 +12,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import { Box, Button } from "@mui/material";
 import { useTheme } from '@emotion/react';
-
+import gif from "./Heap_sort_example.gif"
 
 
 
@@ -162,7 +162,7 @@ function resetChart()
             <p>
             מיון הערימה הוא מיון המבוסס על "ערימה בינארית", דבר אשר מאפשר למצוא את האיבר הגדול במערך המאורגן כערימה בבמהירות של  O(log(n), האלגוריתם עובד כך שהמערך מאורגן מחדש בכל פעם עם איבר האב בשורש   (i=0) והוא האיבר הגדול ביותר בתת ערימה. לאחר מציאת האיבר הגדול והכנסת האיבר לשורש אנו מאתחלים את השורש באיבר האחרון בתת מערך (הבן השמאל קיצון בתת ערימה). ולאחר מכן מוחקים את איבר האב הקודם שמצאנו מהתת ערימה ודוחפים אותו לחלק הממוין של המערך.
             <br></br>
-         
+            <img className='main-sec' src={gif}></img> 
             </p>
           </div>
           <hr></hr>

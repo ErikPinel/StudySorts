@@ -60,7 +60,13 @@ margin-left: 2vw !important;
         justify-content: center;
     }
     
-    
+    .main-sec{
+        width: 50vw;
+        margin: 5vw;
+        margin-right: 30vw;
+        display: flex;
+        flex-direction: row;
+    }
     
     /* .copyIcon-container:visited{
     border-color: green;
